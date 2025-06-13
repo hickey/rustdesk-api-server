@@ -13,12 +13,12 @@ class RustDeskToken(models.Model):
     uuid = models.CharField(verbose_name=_('uuid'), max_length=60)
     access_token = models.CharField(verbose_name=_('access_token'), max_length=60, blank=True)
     create_time = models.DateTimeField(verbose_name=_('登录时间'), auto_now_add=True)
-    # expire_time = models.DateTimeField(verbose_name='过期时间')
+    # expire_time = models.DateTimeField(verbose_name=_('过期时间'))
 
     class Meta:
         ordering = ('-username',)
-        verbose_name = "Token"
-        verbose_name_plural = _("Token列表")
+        verbose_name = _("Token")
+        verbose_name_plural = _("Token table")
 
 
 class RustDeskTokenAdmin(admin.ModelAdmin):
@@ -36,8 +36,8 @@ class RustDeskTag(models.Model):
 
     class Meta:
         ordering = ('-uid',)
-        verbose_name = "Tags"
-        verbose_name_plural = _("Tags列表")
+        verbose_name = _("Tags")
+        verbose_name_plural = _("Tags table")
 
 
 class RustDeskTagAdmin(admin.ModelAdmin):
@@ -60,8 +60,8 @@ class RustDeskPeer(models.Model):
 
     class Meta:
         ordering = ('-username',)
-        verbose_name = "Peers"
-        verbose_name_plural = _("Peers列表")
+        verbose_name = _("Peers")
+        verbose_name_plural = _("Peers table")
 
 
 class RustDeskPeerAdmin(admin.ModelAdmin):
@@ -72,16 +72,16 @@ class RustDeskPeerAdmin(admin.ModelAdmin):
 
 class RustDesDevice(models.Model):
     rid = models.CharField(verbose_name=_('客户端ID'), max_length=60, blank=True)
-    cpu = models.CharField(verbose_name='CPU', max_length=100)
+    cpu = models.CharField(verbose_name=_('CPU'), max_length=100)
     hostname = models.CharField(verbose_name=_('主机名'), max_length=100)
     memory = models.CharField(verbose_name=_('内存'), max_length=100)
     os = models.CharField(verbose_name=_('操作系统'), max_length=100)
-    uuid = models.CharField(verbose_name='uuid', max_length=100)
+    uuid = models.CharField(verbose_name=_('uuid'), max_length=100)
     username = models.CharField(verbose_name=_('系统用户名'), max_length=100, blank=True)
     version = models.CharField(verbose_name=_('客户端版本'), max_length=100)
     ip_address = models.CharField(verbose_name=_('IP'), max_length=60, blank=True)
     create_time = models.DateTimeField(verbose_name=_('设备注册时间'), auto_now_add=True)
-    update_time = models.DateTimeField(verbose_name=('设备更新时间'), auto_now=True, blank=True)
+    update_time = models.DateTimeField(verbose_name=_('设备更新时间'), auto_now=True, blank=True)
 
     class Meta:
         ordering = ('-rid',)
@@ -96,16 +96,16 @@ class RustDesDeviceAdmin(admin.ModelAdmin):
 
 
 class ConnLog(models.Model):
-    id = models.IntegerField(verbose_name='ID', primary_key=True)
-    action = models.CharField(verbose_name='Action', max_length=20, null=True)
-    conn_id = models.CharField(verbose_name='Connection ID', max_length=10, null=True)
-    from_ip = models.CharField(verbose_name='From IP', max_length=30, null=True)
-    from_id = models.CharField(verbose_name='From ID', max_length=20, null=True)
-    rid = models.CharField(verbose_name='To ID', max_length=20, null=True)
-    conn_start = models.DateTimeField(verbose_name='Connected', null=True)
-    conn_end = models.DateTimeField(verbose_name='Disconnected', null=True)
-    session_id = models.CharField(verbose_name='Session ID', max_length=60, null=True)
-    uuid = models.CharField(verbose_name='uuid', max_length=60, null=True)
+    id = models.IntegerField(verbose_name=_('ID'), primary_key=True)
+    action = models.CharField(verbose_name=_('Action'), max_length=20, null=True)
+    conn_id = models.CharField(verbose_name=_('Connection ID'), max_length=10, null=True)
+    from_ip = models.CharField(verbose_name=_('From IP'), max_length=30, null=True)
+    from_id = models.CharField(verbose_name=_('From ID'), max_length=20, null=True)
+    rid = models.CharField(verbose_name=_('To ID'), max_length=20, null=True)
+    conn_start = models.DateTimeField(verbose_name=_('Connected'), null=True)
+    conn_end = models.DateTimeField(verbose_name=_('Disconnected'), null=True)
+    session_id = models.CharField(verbose_name=_('Session ID'), max_length=60, null=True)
+    uuid = models.CharField(verbose_name=_('uuid'), max_length=60, null=True)
 
 
 class ConnLogAdmin(admin.ModelAdmin):
@@ -115,14 +115,14 @@ class ConnLogAdmin(admin.ModelAdmin):
 
 
 class FileLog(models.Model):
-    id = models.IntegerField(verbose_name='ID', primary_key=True)
-    file = models.CharField(verbose_name='Path', max_length=500)
-    remote_id = models.CharField(verbose_name='Remote ID', max_length=20, default='0')
-    user_id = models.CharField(verbose_name='User ID', max_length=20, default='0')
-    user_ip = models.CharField(verbose_name='User IP', max_length=20, default='0')
-    filesize = models.CharField(verbose_name='Filesize', max_length=500, default='')
-    direction = models.IntegerField(verbose_name='Direction', default=0)
-    logged_at = models.DateTimeField(verbose_name='Logged At', null=True)
+    id = models.IntegerField(verbose_name=_('ID'), primary_key=True)
+    file = models.CharField(verbose_name=_('Path'), max_length=500)
+    remote_id = models.CharField(verbose_name=_('Remote ID'), max_length=20, default='0')
+    user_id = models.CharField(verbose_name=_('User ID'), max_length=20, default='0')
+    user_ip = models.CharField(verbose_name=_('User IP'), max_length=20, default='0')
+    filesize = models.CharField(verbose_name=_('Filesize'), max_length=500, default='')
+    direction = models.IntegerField(verbose_name=_('Direction'), default=0)
+    logged_at = models.DateTimeField(verbose_name=_('Logged At'), null=True)
 
 
 class FileLogAdmin(admin.ModelAdmin):
